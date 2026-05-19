@@ -35,3 +35,16 @@ ClientBuilder::from_uri(Uri::from_static("ws://127.0.0.1:8080"))
 
 ## Experiment 2.3
 ![Experiment 2.3](docs/img/Experiment_2_3.png)
+### Explanation:
+Modifikasi yang saya lakukan adalah menambahkan identitas pengirim pada pesan broadcast, karena belum ada nama user dan menambahkan ip asalnya. Hal tersebut dilakukan dengan:
+
+- Server menambahkan alamat IP:port pengirim ke isi pesan yang dibroadcast (lihat [src/bin/server.rs](src/bin/server.rs#L26)).
+- Client menambahkan label perangkat lokal saat menampilkan pesan dari server (lihat [src/bin/client.rs](src/bin/client.rs#L18)).
+
+Hasil yang terlihat di terminal client setelah perubahan, ketika salah satu mengirimkan pesan:
+
+```text
+Haikal's Computer - From server: 127.0.0.1:61112: halo
+```
+
+Alasan perubahan: Karena sebelumnya tanpa nama user, dan menampilkan alamat IP:port supaya membantu membedakan sumber pesan ketika banyak pesan ditampilkan di client.
